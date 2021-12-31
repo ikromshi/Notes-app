@@ -40,6 +40,11 @@ document.querySelector("#add-todo").addEventListener("input", function(event) {
 })
 
 
+// FILTER BY TYPE
+document.querySelector("#filter-by").addEventListener("change", function(e) {
+    console.log(e.target.value)
+})
+
 
 
 

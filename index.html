@@ -11,9 +11,13 @@
 
         <br><hr>
         <input type="text" id="add-todo"placeholder="Filter TODOs">
-        <div id="notes-div">
-
-        </div>
+       <select id="filter-by">
+           <option value="byEdited">Sort by last edited</option>
+           <option value="byRecent">Sort by recently created</option>
+           <option value="byAlphabet">Sort alphabetically</option>
+        </select>
+       
+        <div id="notes-div"></div>
         <hr><br>
 
         <p class="note">This is a paragraph</p>
