@@ -1,0 +1,31 @@
+// Add a new element
+const newP = document.createElement("p")
+newP.textContent = "This is a new element from JavaScript"
+document.querySelector("body").appendChild(newP)
+
+// Using a button
+document.querySelector("button").addEventListener("click", function() {
+    console.log("Creating a note")
+})
+
+// Targeting the second button element
+document.querySelectorAll("button")[1].addEventListener("click", function() {
+    console.log("Removing all elements")
+})
+
+// Using IDs in targeting buttons
+document.querySelector("#test").addEventListener("click", function() {
+    console.log("Targeting a button through ID: Successful")
+})
+
+// Using classes to target more than one element (create classes in elements)
+document.querySelector("#remove-all").addEventListener("click", function() {
+    document.querySelectorAll(".note").forEach(function(note) {
+        note.remove()
+    })
+})
+
+// Working with User Input
+document.querySelector("#add-todo").addEventListener("input", function(e) {
+    console.log(e.target.value)
+})
