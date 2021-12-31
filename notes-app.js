@@ -46,5 +46,17 @@ document.querySelector("#filter-by").addEventListener("change", function(e) {
 })
 
 
+// USING LOCAL STORAGE AND JASON
 
+localStorage.setItem("name", "Ikrom")
+console.log(localStorage.getItem("name"))
+localStorage.removeItem("name")
+localStorage.clear()
 
+    // USING JSON
+let newNotes = JSON.stringify(notes)
+localStorage.setItem("notes", newNotes)
+newNotes = localStorage.getItem("notes")
+console.log(JSON.parse(newNotes))
+localStorage.clear()
+console.clear()

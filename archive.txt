@@ -29,3 +29,11 @@ document.querySelector("#remove-all").addEventListener("click", function() {
 document.querySelector("#add-todo").addEventListener("input", function(e) {
     console.log(e.target.value)
 })
+
+
+!!!LOCAL STORAGE!!! (Clear, Read, Update, Delete)
+
+C -> localStorage.setItem("key", "value")
+R -> localStorage.getItem("key")
+U -> localStorage.removeItem("key")
+D - > localStorage.clear()
