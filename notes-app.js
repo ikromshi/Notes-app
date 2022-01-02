@@ -29,7 +29,14 @@ const renderNotes = function(notes, filters) {
     // Writes the results in the div
     filteredData.forEach(function(item){
         const newEl = document.createElement("p")
-        newEl.textContent = item.title
+
+        if (item.title.length > 0) {
+            newEl.textContent = item.title
+        } else {
+            newEl.textContent = "Unnamed note"
+        }
+
+        
         document.querySelector("#notes-div").appendChild(newEl)
     })
 }
@@ -41,22 +48,39 @@ document.querySelector("#add-todo").addEventListener("input", function(event) {
 
 
 // FILTER BY TYPE
+let my_notes = []
+
 document.querySelector("#filter-by").addEventListener("change", function(e) {
     console.log(e.target.value)
 })
 
+const notesJSON = localStorage.getItem("notes")
+if (notesJSON !== null) {
+    my_notes = JSON.parse(notesJSON)
+}
+
+
+
+document.querySelector("#create-note").addEventListener("click", function(e) {
+    my_notes.push({
+        title: "",
+        body: ""
+    })
+    localStorage.setItem("notes", JSON.stringify(my_notes))
+    renderNotes(my_notes, filters)
+})
 
 // USING LOCAL STORAGE AND JASON
 
-localStorage.setItem("name", "Ikrom")
-console.log(localStorage.getItem("name"))
-localStorage.removeItem("name")
-localStorage.clear()
+    // localStorage.setItem("name", "Ikrom")
+    // console.log(localStorage.getItem("name"))
+    // localStorage.removeItem("name")
+    // localStorage.clear()
 
-    // USING JSON
-let newNotes = JSON.stringify(notes)
-localStorage.setItem("notes", newNotes)
-newNotes = localStorage.getItem("notes")
-console.log(JSON.parse(newNotes))
-localStorage.clear()
-console.clear()
+// USING JSON
+    // let newNotes = JSON.stringify(notes)
+    // localStorage.setItem("notes", newNotes)
+    // newNotes = localStorage.getItem("notes")
+    // console.log(JSON.parse(newNotes))
+    // localStorage.clear()
+    // console.clear()
