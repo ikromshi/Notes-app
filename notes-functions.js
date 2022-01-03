@@ -18,14 +18,20 @@ const saveNotes = function(notes) {
 
 // Generate the DOM structure for a note
 const generateNoteDom = function(item) {
-    const newEl = document.createElement("p")
+    const newEl = document.createElement("div")
+    const newText = document.createElement("span")
+    const button = document.createElement("button")
+    button.textContent = "x"
+    newEl.appendChild(button)
 
-        if (item.title.length > 0) {
-            newEl.textContent = item.title
-        } else {
-            newEl.textContent = "Unnamed note"
-        }
-        return newEl
+    if (item.title.length > 0) {
+        newText.textContent = item.title
+    } else {
+        newText.textContent = "Unnamed note"
+    }
+    
+    newEl.appendChild(newText)
+    return newEl
 }
 
 

@@ -1,4 +1,3 @@
-// DOM - Document Object Model
 let notes = [{
     title: "Mo next trip",
     body: "I want to got to Spain"
@@ -10,10 +9,10 @@ let notes = [{
     body: "Get a new chair"
 }]
 
+localStorage.setItem("notes", JSON.stringify(notes))
 notes = getSavedNotes()
 
 
-// RENDERING FILTERED DATA
 const filters = {
     searchText: ""
 }
