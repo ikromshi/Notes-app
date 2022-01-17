@@ -1,3 +1,5 @@
+// const uuidv4 = require("./uuidv4")
+
 let notes = [{
     title: "Mo next trip",
     body: "I want to got to Spain"
@@ -28,9 +30,10 @@ document.querySelector("#filter-by").addEventListener("change", function(e) {
 
 document.querySelector("#create-note").addEventListener("click", function(e) {
     notes.push({
+        id: uuidv4(),
         title: "",
         body: ""
     })
-    saveNotes()
+    saveNotes(notes)
     renderNotes(notes, filters)
 })
