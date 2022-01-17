@@ -11,6 +11,7 @@ let notes = [{
     body: "Get a new chair"
 }]
 
+generateId(notes)
 localStorage.setItem("notes", JSON.stringify(notes))
 notes = getSavedNotes()
 

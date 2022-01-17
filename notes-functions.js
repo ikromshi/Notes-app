@@ -1,3 +1,10 @@
+// Generates unique ID's for each of the notes
+const generateId = function(notes) {
+    notes.forEach(function(note) {
+        note.id = uuidv4()
+    })
+}
+
 // Read existing notes from local storage
 const getSavedNotes = function() {
     const notesJSON = localStorage.getItem("notes")
@@ -9,19 +16,30 @@ const getSavedNotes = function() {
     }
 }
 
-
 // Save notes
 const saveNotes = function(notes) {
     localStorage.setItem("notes", JSON.stringify(notes))
 }
 
+// Remove notes
+const removeNote = function(id, notes) {
+    const noteIndex = notes.findIndex(function(note) {
+        return id === note.id
+    })
+    if (noteIndex > -1) {
+        notes.splice(noteIndex, 1)
+    }
+}
 
 // Generate the DOM structure for a note
-const generateNoteDom = function(item) {
+const generateNoteDom = function(item, notes) {
     const newEl = document.createElement("div")
     const newText = document.createElement("span")
     const button = document.createElement("button")
     button.textContent = "x"
+    button.addEventListener("click", function(e) {
+        removeNote(item.id, notes)
+    })
     newEl.appendChild(button)
 
     if (item.title.length > 0) {
@@ -45,7 +63,7 @@ const renderNotes = function(notes, filters) {
 
     // Writes the results in the div
     filteredData.forEach(function(item){
-        const newEl = generateNoteDom(item)
+        const newEl = generateNoteDom(item, notes)
         document.querySelector("#notes-div").appendChild(newEl)
     })
 }
