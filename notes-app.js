@@ -13,7 +13,8 @@ let notes = [{
 
 generateId(notes)
 localStorage.setItem("notes", JSON.stringify(notes))
-notes = getSavedNotes()
+
+// let notes = getSavedNotes()
 
 
 const filters = {
@@ -30,11 +31,13 @@ document.querySelector("#filter-by").addEventListener("change", function(e) {
 })
 
 document.querySelector("#create-note").addEventListener("click", function(e) {
+    const id = uuidv4()
     notes.push({
-        id: uuidv4(),
+        id: id,
         title: "",
         body: ""
     })
     saveNotes(notes)
     renderNotes(notes, filters)
+    location.assign(`/edit.html#${id}`)
 })

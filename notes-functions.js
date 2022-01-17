@@ -34,7 +34,7 @@ const removeNote = function(id, notes) {
 // Generate the DOM structure for a note
 const generateNoteDom = function(item, notes, filters) {
     const newEl = document.createElement("div")
-    const newText = document.createElement("span")
+    const newText = document.createElement("a")
     const button = document.createElement("button")
     button.textContent = "x"
     button.addEventListener("click", function() {
@@ -50,6 +50,7 @@ const generateNoteDom = function(item, notes, filters) {
         newText.textContent = "Unnamed note"
     }
     
+    newText.setAttribute("href", `/edit.html#${item.id}`)
     newEl.appendChild(newText)
     return newEl
 }
