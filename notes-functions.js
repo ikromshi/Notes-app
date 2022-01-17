@@ -32,13 +32,15 @@ const removeNote = function(id, notes) {
 }
 
 // Generate the DOM structure for a note
-const generateNoteDom = function(item, notes) {
+const generateNoteDom = function(item, notes, filters) {
     const newEl = document.createElement("div")
     const newText = document.createElement("span")
     const button = document.createElement("button")
     button.textContent = "x"
-    button.addEventListener("click", function(e) {
+    button.addEventListener("click", function() {
         removeNote(item.id, notes)
+        saveNotes(notes)
+        renderNotes(notes, filters)
     })
     newEl.appendChild(button)
 
@@ -63,7 +65,7 @@ const renderNotes = function(notes, filters) {
 
     // Writes the results in the div
     filteredData.forEach(function(item){
-        const newEl = generateNoteDom(item, notes)
+        const newEl = generateNoteDom(item, notes, filters)
         document.querySelector("#notes-div").appendChild(newEl)
     })
 }
