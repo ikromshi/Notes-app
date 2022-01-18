@@ -4,8 +4,8 @@ const removeElement = document.querySelector("#remove-note")
 
 // Getting the ID of the note from the website link (substring slices the string)
 const noteId = location.hash.substring(1)
-const notes = getSavedNotes()
-const note = notes.find(function(note) {
+let notes = getSavedNotes()
+let note = notes.find(function(note) {
     return note.id === noteId
 })
 
@@ -32,4 +32,21 @@ removeElement.addEventListener("click", function(e) {
     removeNote(noteId, notes)
     saveNotes(notes)
     location.assign("/index.html")
+})
+
+// Syncing data across pages
+window.addEventListener("storage", function(e) {
+    if (e.key === "notes") {
+        notes = JSON.parse(e.newValue)
+        note = notes.find(function(note) {
+            return note.id === noteId
+        })
+        
+        if (note === undefined) {
+            location.assign("/index.html")
+        }
+        
+        titleElement.value = note.title
+        bodyElement.value = note.body
+    }
 })
