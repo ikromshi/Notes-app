@@ -53,3 +53,12 @@ newNotes = localStorage.getItem("notes")
 console.log(JSON.parse(newNotes))
 localStorage.clear()
 console.clear()
+
+// Using dates
+const now = new Date()
+console.log(`Year: ${now.getFullYear()}`)
+console.log(`Month: ${now.getMonth()}`)
+console.log(`Day: ${now.getDate()}`)
+console.log(`Hour: ${now.getHours()}`)
+console.log(`Minute: ${now.getMinutes()}`)
+console.log(`Seconds: ${now.getSeconds()}`)
