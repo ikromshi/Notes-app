@@ -1,25 +1,10 @@
-// const uuidv4 = require("./uuidv4")
-
-let notes = [{
-    title: "Mo next trip",
-    body: "I want to got to Spain"
-}, {
-    title: "Habits to work on",
-    body: "Exercise. Eat a bit better"
-}, {
-    title: "Office modification",
-    body: "Get a new chair"
-}]
-
-generateId(notes)
-localStorage.setItem("notes", JSON.stringify(notes))
-
-// let notes = getSavedNotes()
+let notes = getSavedNotes()
 
 
 const filters = {
     searchText: ""
 }
+renderNotes(notes, filters)
 
 document.querySelector("#add-todo").addEventListener("input", function(event) {
     filters.searchText = event.target.value
