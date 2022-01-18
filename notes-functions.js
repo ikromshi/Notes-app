@@ -56,8 +56,38 @@ const generateNoteDom = function(item, notes, filters) {
 }
 
 
+// Sorting notes by one of the three ways
+const sortNotes = function(notes, sortBy) {
+    if (sortBy === "byEdited") {
+        return notes.sort(function(a, b) {
+            if (a.updatedAt > b.updatedAt) {
+                return -1
+            } else {
+                return 1
+            }
+        })
+    } else if (sortBy === "byRecent") {
+        return notes.sort(function(a, b) {
+            if (a.createdAt > b.createdAt) {
+                return -1
+            } else {
+                return 1
+            }
+        })
+    } else {
+        return notes.sort(function(a, b) {
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1
+            } else {
+                return 1
+            }
+        })
+    }
+}
+
 // Checks if the user input is in the map
 const renderNotes = function(notes, filters) {
+    notes = sortNotes(notes, filters.sortBy)
     const filteredData = notes.filter(function(item) {
         return item.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
