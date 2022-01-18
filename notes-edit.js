@@ -19,11 +19,13 @@ bodyElement.value = note.body
 // Saving the edited notes
 titleElement.addEventListener("input", function(e) {
     note.title = e.target.value
+    note.updatedAt = moment().valueOf()
     saveNotes(notes)
 })
 
 bodyElement.addEventListener("input", function(e) {
     note.body = e.target.value
+    note.updatedAt = moment().valueOf()
     saveNotes(notes)
 })
 

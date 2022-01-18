@@ -17,7 +17,10 @@ document.querySelector("#filter-by").addEventListener("change", function(e) {
 
 document.querySelector("#create-note").addEventListener("click", function(e) {
     const id = uuidv4()
+    const timeStamp = moment().valueOf()
     notes.push({
+        createdAt: timeStamp,
+        updatedAt: timeStamp,
         id: id,
         title: "",
         body: ""
@@ -35,18 +38,5 @@ window.addEventListener("storage", function(e) {
         renderNotes(notes, filters)
     }
 })
-
-
-
-const now = new Date("December 26 2003 20:08")
-const now2 = new Date("June 16 2003 17:45")
-const timestamp1 = now.getTime()
-const timestamp2 = now2.getTime()
-if (timestamp1 < timestamp2) {
-    console.log(new Date(timestamp1))
-} else {
-    console.log(new Date(timestamp2))
-}
-console.log(new Date())
 
 

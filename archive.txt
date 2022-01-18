@@ -62,3 +62,31 @@ console.log(`Day: ${now.getDate()}`)
 console.log(`Hour: ${now.getHours()}`)
 console.log(`Minute: ${now.getMinutes()}`)
 console.log(`Seconds: ${now.getSeconds()}`)
+
+const now = new Date("December 26 2003 20:08")
+const now2 = new Date("June 16 2003 17:45")
+const timestamp1 = now.getTime()
+const timestamp2 = now2.getTime()
+if (timestamp1 < timestamp2) {
+    console.log(new Date(timestamp1))
+} else {
+    console.log(new Date(timestamp2))
+}
+console.log(new Date())
+
+
+// Getting to know the format values
+const now = moment()
+console.log(now.toString())
+console.log(now.format("MMMM DDDo, YYYY"))
+now.subtract(3, "years").subtract(20, "days")
+console.log(now.fromNow())
+
+
+// Birthday calculator
+let now = moment()
+now.subtract(18, "years").subtract(22, "days")
+const nowTimestamp = now.valueOf()
+now = moment(nowTimestamp)
+console.log(now.format("MMM D, YYYY"))
+
