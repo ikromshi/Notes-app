@@ -1,3 +1,5 @@
+"use strict"
+
 // Generates unique ID's for each of the notes
 const generateId = (notes) => {
     notes.forEach((note) => {
