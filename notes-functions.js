@@ -9,7 +9,8 @@ const generateId = (notes) => {
 const getSavedNotes = () => {
     const notesJSON = localStorage.getItem("notes")
 
-    return notesJSON ==! null ? JSON.parse(notesJSON) : []
+    // Using truthy/falsy values; was "notesJSON ==! null"
+    return notesJSON ? JSON.parse(notesJSON) : []
 }
 
 // Save notes
