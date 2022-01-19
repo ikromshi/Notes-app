@@ -6,9 +6,7 @@ const dateElement = document.querySelector("#last-edit")
 // Getting the ID of the note from the website link (substring slices the string)
 const noteId = location.hash.substring(1)
 let notes = getSavedNotes()
-let note = notes.find(function(note) {
-    return note.id === noteId
-})
+let note = notes.find((note) => note.id === noteId)
 
 if (note === undefined) {
     location.assign("/index.html")
@@ -16,7 +14,7 @@ if (note === undefined) {
 
 
 // Generating the last edited message
-const lastUpdated = function() {
+const lastUpdated = () => {
     const lastEdit = note.updatedAt
     dateElement.innerHTML = `Last edited ${moment(lastEdit).fromNow()}`
 }
@@ -28,14 +26,14 @@ bodyElement.value = note.body
 
 
 // Saving the edited notes
-titleElement.addEventListener("input", function(e) {
+titleElement.addEventListener("input", (e) => {
     note.title = e.target.value
     note.updatedAt = moment().valueOf()
     lastUpdated()
     saveNotes(notes)
 })
 
-bodyElement.addEventListener("input", function(e) {
+bodyElement.addEventListener("input", (e) => {
     note.body = e.target.value
     note.updatedAt = moment().valueOf()
     lastUpdated()
@@ -43,19 +41,17 @@ bodyElement.addEventListener("input", function(e) {
 })
 
 // Working with the remove button
-removeElement.addEventListener("click", function(e) {
+removeElement.addEventListener("click", (e) => {
     removeNote(noteId, notes)
     saveNotes(notes)
     location.assign("/index.html")
 })
 
 // Syncing data across pages
-window.addEventListener("storage", function(e) {
+window.addEventListener("storage", (e) => {
     if (e.key === "notes") {
         notes = JSON.parse(e.newValue)
-        note = notes.find(function(note) {
-            return note.id === noteId
-        })
+        note = notes.find((note) => note.id === noteId)
         
         if (note === undefined) {
             location.assign("/index.html")
