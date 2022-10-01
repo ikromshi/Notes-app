@@ -6,6 +6,7 @@ const titleElement = document.querySelector("#note-title")
 const bodyElement = document.querySelector("#note-body")
 const removeElement = document.querySelector("#remove-note")
 const dateElement = document.querySelector("#last-edit")
+const saveNote = document.querySelector("#save-note")
 const noteId = location.hash.substring(1)
 
 initEditPage(noteId)
@@ -32,6 +33,10 @@ bodyElement.addEventListener("input", (e) => {
 // Working with the remove button
 removeElement.addEventListener("click", (e) => {
     removeNote(noteId)
+    location.assign("/index.html")
+})
+
+saveNote.addEventListener("click", (e) => {
     location.assign("/index.html")
 })
 

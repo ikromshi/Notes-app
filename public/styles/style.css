@@ -118,6 +118,10 @@ a {
     background: #888888;
     border-bottom: 2px solid #717171;
 }
+.button--save {
+    background: #759c65;
+    border-bottom: 2px solid #717171;
+}
 
 .button--secondary:hover {
     background: #6E6E6E;
